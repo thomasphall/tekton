@@ -1,0 +1,29 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: new-pipeline
+  namespace: hall-dev
+spec:
+  tasks:
+    - name: wget
+      params:
+        - name: url
+          value: >-
+            https://mirror.openshift.com/pub/openshift-v4/clients/ocp/stable/openshift-client-windows.zip
+        - name: diroptions
+          value: []
+        - name: options
+          value: []
+        - name: wget-option
+          value: >-
+            docker.io/library/buildpack-deps:stable-curl@sha256:3d5e59c47d5f82a769ad3f372cc9f86321e2e2905141bba974b75d3c08a53e8e
+      taskRef:
+        kind: Task
+        name: wget
+      workspaces:
+        - name: wget-workspace
+          workspace: temp
+  workspaces:
+    - name: storage
+    persistentVolumeClaim:
+        claimName: tekton-unzip-file
