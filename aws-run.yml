@@ -14,11 +14,11 @@ spec:
     - name: ARGS
       value:
         - s3
-        - diagrawa-test
+        - unzip-test
   workspaces:
     - name: secrets
       secret:
         secretName: aws-credentials
-    - name: source
-      configmap:
-        name: upload-file
+    - name: storage
+      persistentVolumeClaim:
+          claimName: tekton-unzip-file

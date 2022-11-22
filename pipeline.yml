@@ -21,9 +21,16 @@ spec:
         kind: Task
         name: wget
       workspaces:
-        - name: wget-workspace
-          workspace: temp
+        - name: storage
+          workspace: storage
+    - name: unzip
+      taskRef:
+        kind: Task
+        name: unzip
+      workspaces:
+        - name: storage
+          workspace: storage  
   workspaces:
     - name: storage
-    persistentVolumeClaim:
+      persistentVolumeClaim:
         claimName: tekton-unzip-file
