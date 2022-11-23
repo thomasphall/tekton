@@ -15,10 +15,11 @@ spec:
       value:
         - s3
         - unzip-test
+  serviceAccountName: default
   workspaces:
     - name: secrets
       secret:
         secretName: aws-credentials
     - name: storage
       persistentVolumeClaim:
-          claimName: tekton-unzip-file
+          claimName: transfer-pipeline

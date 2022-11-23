@@ -1,4 +1,3 @@
----
 apiVersion: tekton.dev/v1beta1
 kind: Task
 metadata:
@@ -14,7 +13,7 @@ spec:
   workspaces:
     - name: storage
       persistentVolumeClaim:
-        claimName: tekton-unzip-file
+        claimName: transfer-pipeline
   results:
     - name: README
       description: echo the README of the repo
