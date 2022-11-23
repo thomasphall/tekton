@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: new-pipeline
+  name: unzip-pipeline
   namespace: hall-dev
 spec:
   tasks:
@@ -32,5 +32,5 @@ spec:
           workspace: storage  
   workspaces:
     - name: storage
-      persistentVolumeClaim:
-        claimName: tekton-unzip-file
+#      persistentVolumeClaim:
+#        claimName: tekton-unzip-file
