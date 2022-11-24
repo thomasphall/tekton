@@ -2,10 +2,9 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: transfer-pipeline
-  namespace: hall-dev
 spec:
   tasks:
-    - name: wget
+    - name: wget-file
       params:
         - name: url
           value: >-
@@ -23,7 +22,7 @@ spec:
       workspaces:
         - name: storage
           workspace: storage
-    - name: unzip
+    - name: unzip-file
       taskRef:
         kind: Task
         name: unzip
